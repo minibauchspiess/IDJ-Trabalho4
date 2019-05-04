@@ -50,12 +50,13 @@ void Sprite::Render(){
 }
 
 void Sprite::Render(int x, int y, int w, int h, int layer){
+    //cout<<associated.layer<<endl;
     Game& instance = Game::GetInstance();
 
     SDL_Rect dstrect;
-    dstrect.x = x - (int)(Camera::pos.x*(layer+1)*LAYER_MOV);// + (int)Camera::pos.x*SPEED*LAYER_MOV/(layer+1);
+    dstrect.x = x - (int)(Camera::pos.x*(layer+1)*LAYER_MOV);
     //cout<<layer<<endl;
-    dstrect.y =y  - (int)(Camera::pos.y*(layer+1)*LAYER_MOV);// + (int)Camera::pos.y*SPEED*LAYER_MOV/(layer+1);
+    dstrect.y =y  - (int)(Camera::pos.y*(layer+1)*LAYER_MOV);
     dstrect.w = w;
     dstrect.h = h;
 

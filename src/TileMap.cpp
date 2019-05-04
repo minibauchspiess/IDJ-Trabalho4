@@ -59,9 +59,11 @@ void TileMap::RenderLayer(int layer, int cameraX, int cameraY){
 }
 
 void TileMap::Render(){
-    for(int layer=0; layer<mapDepth;layer++){
+    /*for(int layer=0; layer<mapDepth;layer++){
         RenderLayer(layer);
-    }
+    }*/
+    RenderLayer(associated.layer);
+    associated.layer = -1;
 }
 
 void TileMap::Update(float){}

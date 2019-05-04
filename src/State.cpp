@@ -30,7 +30,6 @@ State::State()
     tmObj->AddComponent((shared_ptr<TileMap>)tm);
     tmObj->box.x = 0;
     tmObj->box.y = 0;
-    tmObj->AddComponent((shared_ptr<TileMap>)tm);
     objectArray.emplace_back(tmObj);
 
 
@@ -83,8 +82,16 @@ void State::Update(float dt){
 void State::Render(){
     for (int layer=0; layer<N_LAYERS;layer++) {         //Render objects with layer priority
         for (unsigned int i = 0; i < objectArray.size(); i++){
+            if(objectArray[i]->layer == -1){            //TileMap, a multilayer GameObject
+                objectArray[i]->layer = layer;
+                objectArray[i]->Render();
+            }
+            else{
+                if(layer == objectArray[i]->layer){
+                    objectArray[i]->Render();
+                }
+            }
 
-            objectArray[i]->Render();
         }
     }
 
